@@ -24,7 +24,7 @@ router.get('', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
     try {
-        const todo = await Todo.findByIdAndUpdate(req.params.id,req.body,{new:true}).lean().exec()
+        const todo = await Todo.findByIdAndUpdate({title:req.params.id},req.body,{new:true}).lean().exec()
         res.send(todo)
     } catch (error) {
         res.send(error)
